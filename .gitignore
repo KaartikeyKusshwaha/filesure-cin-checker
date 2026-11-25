@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.vercel/
+.env*
+!.env.example
+test-results/
+playwright-report/
+.superpowers/
+submission/transcripts/
+submission/*.zip
+*.log
+
+.vercel
+.env*.local
