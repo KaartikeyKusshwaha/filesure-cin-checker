@@ -5,7 +5,7 @@
 - [x] Original AI transcript snapshot, including planning and review sessions; rerun npm run transcripts after later chat messages.
 - [ ] Video under ten minutes, with screen, face and voice; demo, design decision, code walkthrough and authentic AI correction.
 - [ ] Verify the exact 72-hour deadline from the assignment email.
-- [ ] Rotate the test key supplied in the chat before sharing the unedited transcripts; update the production server environment and redeploy if registry lookup must remain enabled.
+- [x] Rotate and revoke the chat-supplied test key; update Vercel's production environment and redeploy. Verified 25 November 2026: old key HTTP 401, production company and LLP lookups HTTP 200.
 - [ ] Test both links in a signed-out browser.
 - [ ] Confirm the video and transcript download permissions work for the recipient.
 - [ ] Send to the address that supplied the assignment. No email is sent automatically.
