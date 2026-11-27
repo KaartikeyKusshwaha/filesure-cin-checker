@@ -103,14 +103,19 @@ export function Results({
       onChange={() => toggle(r.normalized)}
     />
   );
-  const values = (r: Row) => ({
-    listing: r.decoded.listing ?? "—",
-    state:
-      r.decoded.state ?? (r.entity === "LLP" && r.valid ? "Not encoded" : "—"),
-    year:
-      r.decoded.year ?? (r.entity === "LLP" && r.valid ? "Not encoded" : "—"),
-    type: r.decoded.companyType ?? "—",
-  });
+  const values = (r: Row) => {
+    const isLlp = r.entity === "LLP" && r.valid;
+    const lookup = registry[r.normalized];
+    const record = isLlp && lookup?.state === "found" ? lookup.data : undefined;
+    return {
+      listing: r.decoded.listing ?? "—",
+      state: isLlp ? record?.state || "Not encoded" : (r.decoded.state ?? "—"),
+      year: isLlp
+        ? record?.incorporated || "Not encoded"
+        : (r.decoded.year ?? "—"),
+      type: r.decoded.companyType ?? "—",
+    };
+  };
   return (
     <section
       className={`results-section ${stale ? "outdated" : ""}`}
